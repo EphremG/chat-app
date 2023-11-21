@@ -75,7 +75,7 @@ body {
   background: -o-linear-gradient(165deg, #471f1f 0%, #c17d41 100%);
   background: linear-gradient(285deg, #93264a 0%, #3e342b 100%);
   background-attachment: fixed !important; } */
-  background: #292b2c
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/public/img/anonymous_background_image.jpg);
 }
 .koolui-ucard-ji01 {
   font-family: "Barlow", sans-serif;

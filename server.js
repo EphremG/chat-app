@@ -33,7 +33,7 @@ app.engine('html', ejs.renderFile)
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
-const botName = 'EADiscord'
+const botName = 'Anon '
 
 //create connection
 const db = mysql.createConnection({
@@ -86,6 +86,21 @@ app.get('/leaveroom', (req, res) => {
 app.post('/welcome', (req, res) => {
   let username = req.body.username;
   res.cookie('user', username);
+  let sql = `select nickname from Members where nickname = "${username}"`;
+  let query2 = db.query(sql, (err, results) => {
+    if (!err) {
+      if(results.length>0){
+      console.log(results[0].nickname);
+      console.log("Username Exist Please try another one!")
+      // res.sendFile(path.join(__dirname, '/public/index.html'))
+      res.redirect('/')
+      // console.error("The Username doesnt exist");
+      }
+    }
+    else{
+      
+    }
+  })
   res.sendFile(path.join(__dirname, '/public/groups.html'))
 })
 
@@ -99,7 +114,7 @@ app.post('/creategroup', (req, res) => {
   let data = { name: groupname, createdby: creatby, description:description }
   let sql = 'insert into GroupName SET ?'
   let sql2 = `select id from GroupName where name = "${groupname}"`;
-  console.log(sql2)
+ // console.log(sql2)
   let groupID;
   
   let query = db.query(sql, data, (err, result) => {

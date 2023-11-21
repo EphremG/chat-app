@@ -4,13 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/form-container.css">
+    <link rel="stylesheet" href="./css/bg.css">
+
 </head>
 <body>
-    <form action="/creategroup" method="post">
   
-    Group Name<input type="text" name="groupName" value="">
-    Description<input type="text" name="description" value="">
-    <input type="submit">
-</form>
+<div class="background-container">
+    <img src="./img/anonymous_background_image.jpg" alt="">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+  </div>
+
+  <div class="form-container">
+
+    <figure class="text-center">
+      <blockquote class="blockquote">
+        <p style="color: white;">Welcome to the Anonymous Chat App</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Chat annonymously 
+      </figcaption>
+    </figure>
+    
+    <form action="/creategroup" method="post">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control"  name="groupName" placeholder="Group name" aria-label="GroupName" aria-describedby="basic-addon1">
+        <input type="text" class="form-control"  name="description" placeholder="Group name" aria-label="GroupName" aria-describedby="basic-addon1">
+      
+    </div>
+      <button type="submit" class="btn" style="background-color: #1D9BF0; color: #fff; ">Continue</button>
+    </form>
+  </div>
 </body>
 </html>
