@@ -70,12 +70,42 @@ function outputRoomName(room) {
   roomName.innerText = room;
 }
 
-// Add users to DOM
+
+
+// // Add users to DOM
+// function outputUsers(users) {
+//   userList.innerHTML = '';
+//   users.forEach((user) => {
+//     const li = document.createElement('li');
+//     li.innerText = user.username;
+//     userList.appendChild(li);
+//   });
+// }
 function outputUsers(users) {
   userList.innerHTML = '';
+  
   users.forEach((user) => {
     const li = document.createElement('li');
-    li.innerText = user.username;
+    li.className = 'user-item'; // Add a class to style the list item
+
+    const img = document.createElement('img');
+    img.src = '/img/grouppic.png'; // replace with the property name that holds the image source
+    img.width = '40';
+    img.className = 'user-img'; // Add a class to style the image
+    li.appendChild(img);
+
+    const username = document.createElement('span');
+    username.textContent = user.username;
+    username.className = 'user-name'; // Add a class to style the username
+    li.appendChild(username);
+
+    // Create an image to indicate user activity
+    const activeImg = document.createElement('img');
+    activeImg.src = '/img/active.png';
+    activeImg.width = '20';
+    activeImg.className = 'user-active'; // Add a class to style the activity image
+    li.appendChild(activeImg);
+
     userList.appendChild(li);
   });
 }
@@ -88,3 +118,5 @@ document.getElementById('leave-btn').addEventListener('click', () => {
   } else {
   }
 });
+
+

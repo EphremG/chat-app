@@ -118,72 +118,75 @@ margin-bottom: 15px;
       dataListContainer.innerHTML = ''; // Clear existing data
 
       data.forEach(item => {
-        const form = document.createElement('form');
-        form.action = '/chatgroup';
-        form.method = 'post';
-        form.className = 'koolui-ucard-ji01';
+        console.log(item);
+          if(item.count !=0) {
+              const form = document.createElement('form');
+              form.action = '/chatgroup';
+              form.method = 'post';
+              form.className = 'koolui-ucard-ji01';
 
-        const groupItem = document.createElement('div');
-        groupItem.className = 'item';
+              const groupItem = document.createElement('div');
+              groupItem.className = 'item';
 
-        const itemBadge = document.createElement('div');
-        itemBadge.className = 'item__badge';
-        itemBadge.textContent = item.count;
+              const itemBadge = document.createElement('div');
+              itemBadge.className = 'item__badge';
+              itemBadge.textContent = item.count;
 
-        const itemMedia = document.createElement('div');
-        itemMedia.className = 'item__media';
+              const itemMedia = document.createElement('div');
+              itemMedia.className = 'item__media';
 
-        const img = document.createElement('img');
-        img.src = 'assets/img/ava_01.jpg';
-        img.alt = 'Image';
-        
-        const groupid = document.createElement('div');
-        groupid.textContent = `Created by: ${item.createdBy}`;
-        groupid.innerHTML += `<input type="text" hidden name="groupid" value="${item.id}">`;
+              const img = document.createElement('img');
+              img.src = '/img/grouppic.png';
+              img.alt = 'Image';
+              
+              const groupid = document.createElement('div');
+              groupid.textContent = `Created by: ${item.createdBy}`;
+              groupid.innerHTML += `<input type="text" hidden name="groupid" value="${item.id}">`;
 
-        const groupName = document.createElement('div');
-       
-        groupName.innerHTML += `<input type="text" hidden name="groupname" value="${item.name}">`;
+              const groupName = document.createElement('div');
+            
+              groupName.innerHTML += `<input type="text" hidden name="groupname" value="${item.name}">`;
 
 
-        const username = document.createElement('div');
-        username.innerHTML += `<input type="text" hidden id="usern" name="username" >`;
+              const username = document.createElement('div');
+              username.innerHTML += `<input type="text" hidden id="usern" name="username" >`;
 
-        const itemHeading = document.createElement('div');
-        itemHeading.className = 'item__heading';
+              const itemHeading = document.createElement('div');
+              itemHeading.className = 'item__heading';
 
-        const h3 = document.createElement('h3');
-        h3.textContent = item.name;
+              const h3 = document.createElement('h3');
+              h3.textContent = item.name;
 
-        const small = document.createElement('small');
-        small.textContent = item.description;
+              const small = document.createElement('small');
+              small.textContent = item.description;
 
-        const joinButton = document.createElement('button');
-        joinButton.className = 'btn btn-dark btn-block text-uppercase';
-        joinButton.textContent = 'Join Group';
+              const joinButton = document.createElement('button');
+              joinButton.className = 'btn btn-dark btn-block text-uppercase';
+              joinButton.textContent = 'Join Group';
 
-        itemHeading.appendChild(h3);
-        itemHeading.appendChild(small);
+              itemHeading.appendChild(h3);
+              itemHeading.appendChild(small);
 
-        itemMedia.appendChild(img);
-       
-        groupItem.appendChild(itemBadge);
-        groupItem.appendChild(username);
-        groupItem.appendChild(groupName);
-       
-        groupItem.appendChild(itemMedia);
-        groupItem.appendChild(groupid);
-        groupItem.appendChild(itemHeading);
-        groupItem.appendChild(joinButton);
+              itemMedia.appendChild(img);
+            
+              groupItem.appendChild(itemBadge);
+              groupItem.appendChild(username);
+              groupItem.appendChild(groupName);
+            
+              groupItem.appendChild(itemMedia);
+              groupItem.appendChild(groupid);
+              groupItem.appendChild(itemHeading);
+              groupItem.appendChild(joinButton);
 
-        form.appendChild(groupItem);
-        dataListContainer.appendChild(form);
-        
-        // Set the value of the "usern" input field for each item
-        const usernInput = username.querySelector('#usern');
-        usernInput.value = getCookieValue("user");
-    
+              form.appendChild(groupItem);
+              dataListContainer.appendChild(form);
+              
+              // Set the value of the "usern" input field for each item
+              const usernInput = username.querySelector('#usern');
+              usernInput.value = getCookieValue("user");
+        }
       });
+
     }
   </script>
 

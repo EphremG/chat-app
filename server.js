@@ -90,18 +90,18 @@ app.post('/welcome', (req, res) => {
   let query2 = db.query(sql, (err, results) => {
     if (!err) {
       if(results.length>0){
-      console.log(results[0].nickname);
-      console.log("Username Exist Please try another one!")
-      // res.sendFile(path.join(__dirname, '/public/index.html'))
-      res.redirect('/')
-      // console.error("The Username doesnt exist");
+        console.log(results[0].nickname);
+        res.cookie('exist','1')
+        console.log("Username Exist Please try another one!")
+        res.redirect('/')
+      }
+      else{
+        res.cookie('exist','0')
+        res.sendFile(path.join(__dirname, '/public/groups.html'))
       }
     }
-    else{
-      
-    }
   })
-  res.sendFile(path.join(__dirname, '/public/groups.html'))
+  
 })
 
 
@@ -144,7 +144,7 @@ app.post('/creategroup', (req, res) => {
  // console.log(groupID);
 
 app.get('/getData', (req, res) => {
-  const query = 'select *, (select count(nickname)members from (select distinct nickname, groupID from members)b where groupID=id) as count from GroupName';
+  const query = 'select *, (select count(nickname)usermember from (select distinct nickname, groupID from members)b where groupID=id) as count from GroupName';
 
   db.query(query, (err, results) => {
     if (err) {
